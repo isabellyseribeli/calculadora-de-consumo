@@ -2,6 +2,7 @@
 
 import { TARIFF_RATES, INITIAL_ROOMS } from "@/lib/constants";
 import type { Appliance, Room, TariffFlag } from "@/lib/types";
+import { generateId } from "@/lib/utils";
 import React, {
   createContext,
   useState,
@@ -27,29 +28,22 @@ interface EnergyContextType {
 
 export const EnergyContext = createContext<EnergyContextType | null>(null);
 
-// Simple ID generator
-const generateId = () => Math.random().toString(36).substr(2, 9);
-
 export const EnergyProvider = ({ children }: { children: React.ReactNode }) => {
   const [isClient, setIsClient] = useState(false);
-  const [rooms, setRooms] = useState<Room[]>(() => {
-    if (typeof window !== "undefined") {
-      const savedRooms = localStorage.getItem("energywise-rooms");
-      return savedRooms ? JSON.parse(savedRooms) : INITIAL_ROOMS;
-    }
-    return INITIAL_ROOMS;
-  });
+  const [rooms, setRooms] = useState<Room[]>(INITIAL_ROOMS);
   
-  const [tariffFlag, setTariffFlag] = useState<TariffFlag>(() => {
-    if (typeof window !== "undefined") {
-      const savedTariff = localStorage.getItem("energywise-tariff");
-      return (savedTariff as TariffFlag) || "verde";
-    }
-    return "verde";
-  });
+  const [tariffFlag, setTariffFlag] = useState<TariffFlag>("verde");
 
   useEffect(() => {
     setIsClient(true);
+    const savedRooms = localStorage.getItem("energywise-rooms");
+    if (savedRooms) {
+      setRooms(JSON.parse(savedRooms));
+    }
+    const savedTariff = localStorage.getItem("energywise-tariff");
+    if (savedTariff) {
+      setTariffFlag(savedTariff as TariffFlag);
+    }
   }, []);
 
   useEffect(() => {
