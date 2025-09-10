@@ -118,12 +118,12 @@ export default function FloorPlan() {
           className="grid gap-2 max-w-4xl mx-auto h-[70vh]"
           style={{
             gridTemplateAreas: `
-              'sala sala cozinha'
               'suite banheiro_suite cozinha'
-              'quarto_2 banheiro_social lavanderia'
-              'quarto_3 escritorio escritorio'
+              'quarto_2 banheiro_social cozinha'
+              'sala sala lavanderia'
+              'quarto_3 quarto_3 escritorio'
             `,
-            gridTemplateRows: '1.5fr 1fr 1fr 1fr',
+            gridTemplateRows: '1fr 1fr 1fr 1fr',
             gridTemplateColumns: '1fr 1fr 1fr'
           }}
         >
@@ -132,9 +132,9 @@ export default function FloorPlan() {
           {renderRoom("suite", "suite")}
           {renderRoom("banheiro_suite", "banheiro_suite")}
           {renderRoom("quarto_2", "quarto_2")}
+          {renderRoom("quarto_3", "quarto_3")}
           {renderRoom("banheiro_social", "banheiro_social")}
           {renderRoom("lavanderia", "lavanderia")}
-          {renderRoom("quarto_3", "quarto_3")}
           {renderRoom("escritorio", "escritorio")}
         </div>
       </Card>
