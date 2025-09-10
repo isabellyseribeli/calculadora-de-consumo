@@ -124,7 +124,7 @@ export default function FloorPlan() {
               'escritorio sala lavanderia'
             `,
             gridTemplateRows: '1fr 1fr 1fr 1fr',
-            gridTemplateColumns: '1fr 1fr 1fr'
+            gridTemplateColumns: '1fr 1fr 1.2fr'
           }}
         >
           {renderRoom("sala", "sala")}
