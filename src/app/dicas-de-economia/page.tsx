@@ -8,7 +8,7 @@ export default function DicasPage() {
                     Dicas de Economia de Energia
                 </h1>
                 <p className="text-muted-foreground">
-                    Receba dicas personalizadas da nossa IA para reduzir seu consumo de energia.
+                    Confira dicas úteis para reduzir seu consumo de energia e anote seus planos de economia.
                 </p>
             </div>
             <TipsClient />
