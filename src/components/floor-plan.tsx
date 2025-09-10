@@ -6,6 +6,7 @@ import RoomModal from "./room-modal";
 import { Card } from "./ui/card";
 import { Lamp, Utensils, Bed, ShowerHead, Tv, WashingMachine, Laptop, Wind, Printer, Car, Refrigerator, Microwave, CookingPot } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import { Skeleton } from "./ui/skeleton";
 
 const roomIcons: { [key: string]: React.ReactNode } = {
   cozinha: <Utensils />,
@@ -37,7 +38,7 @@ const applianceIcons: { [key: string]: React.ReactNode } = {
 
 
 export default function FloorPlan() {
-  const { getRoomById } = useEnergy();
+  const { getRoomById, isClient } = useEnergy();
   const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
 
   const handleRoomClick = (roomId: string) => {
@@ -48,32 +49,32 @@ export default function FloorPlan() {
     setSelectedRoomId(null);
   };
 
-  const renderRoom = (roomId: string, className: string) => {
+  const renderRoom = (roomId: string, gridArea: string) => {
     const room = getRoomById(roomId);
     if (!room) return null;
 
     const totalAppliances = room.appliances.length;
     const roomBgColors: { [key: string]: string } = {
-        suite: 'bg-blue-200',
-        banheiro_suite: 'bg-blue-300',
-        quarto_2: 'bg-purple-200',
-        cozinha: 'bg-orange-200',
-        banheiro_1: 'bg-gray-300',
-        quarto_3: 'bg-teal-200',
-        sala: 'bg-green-200',
-        lavanderia: 'bg-indigo-200',
-        escritorio: 'bg-pink-200',
-        garagem: 'bg-yellow-200',
-        corredor: 'bg-gray-200',
+        suite: 'bg-pink-300',
+        banheiro_suite: 'bg-purple-300',
+        quarto_2: 'bg-blue-300',
+        cozinha: 'bg-gray-300',
+        banheiro_1: 'bg-orange-300',
+        quarto_3: 'bg-yellow-600/50',
+        sala: 'bg-green-400',
+        lavanderia: 'bg-red-400',
+        escritorio: 'bg-cyan-300',
+        garagem: 'bg-yellow-300',
+        corredor: 'bg-yellow-200',
     };
 
     return (
       <div
         className={cn(
           "flex flex-col items-center justify-center p-4 rounded-md text-gray-800 font-bold text-center cursor-pointer hover:ring-2 hover:ring-primary hover:ring-offset-2 transition-all duration-300 min-h-[100px] shadow-inner",
-          roomBgColors[roomId],
-          className
+          roomBgColors[roomId]
         )}
+        style={{ gridArea }}
         onClick={() => handleRoomClick(room.id)}
       >
         <div className="flex items-center gap-2 mb-2">
@@ -91,26 +92,59 @@ export default function FloorPlan() {
       </div>
     );
   };
+  
+  const renderSkeleton = () => (
+    <Card className="p-4 md:p-6 shadow-lg bg-card/50">
+        <div className="grid grid-cols-3 grid-rows-6 gap-2 max-w-4xl mx-auto h-[70vh]">
+            <Skeleton className="col-start-1 row-start-1 row-span-4" />
+            <Skeleton className="col-start-2 row-start-1" />
+            <Skeleton className="col-start-3 row-start-1" />
+            <Skeleton className="col-start-2 row-start-2" />
+            <Skeleton className="col-start-3 row-start-2 row-span-3" />
+            <Skeleton className="col-start-2 row-start-3" />
+            <Skeleton className="col-start-2 row-start-4" />
+            <Skeleton className="col-start-1 col-span-2 row-start-5" />
+            <Skeleton className="col-start-3 row-start-5" />
+            <Skeleton className="col-start-1 row-start-6" />
+            <Skeleton className="col-start-2 col-span-2 row-start-6" />
+        </div>
+    </Card>
+  );
+
+  if (!isClient) {
+    return renderSkeleton();
+  }
+
 
   return (
     <>
       <Card className="p-4 md:p-6 shadow-lg bg-card/50">
-        <div className="grid grid-cols-4 grid-rows-5 gap-2 max-w-5xl mx-auto">
-          {renderRoom("garagem", "col-span-2")}
-          {renderRoom("escritorio", "col-span-1")}
-          {renderRoom("lavanderia", "col-span-1")}
-          
-          {renderRoom("sala", "col-span-2 row-span-2")}
-          {renderRoom("quarto_3", "col-span-1")}
-          {renderRoom("banheiro_1", "col-span-1")}
-          
-          {renderRoom("corredor", "col-span-2")}
-          
-          {renderRoom("cozinha", "col-span-2 row-span-2")}
-          {renderRoom("quarto_2", "col-span-1")}
-          {renderRoom("banheiro_suite", "col-span-1")}
-
-          {renderRoom("suite", "col-span-2")}
+        <div 
+          className="grid gap-2 max-w-4xl mx-auto h-[70vh]"
+          style={{
+            gridTemplateAreas: `
+              'corredor suite          banheiro_suite'
+              'corredor quarto_2       cozinha'
+              'corredor banheiro_1     cozinha'
+              'corredor quarto_3       cozinha'
+              'sala     sala           lavanderia'
+              'escritorio garagem      garagem'
+            `,
+            gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr',
+            gridTemplateColumns: '0.5fr 1.5fr 1fr'
+          }}
+        >
+          {renderRoom("corredor", "corredor")}
+          {renderRoom("suite", "suite")}
+          {renderRoom("banheiro_suite", "banheiro_suite")}
+          {renderRoom("quarto_2", "quarto_2")}
+          {renderRoom("cozinha", "cozinha")}
+          {renderRoom("banheiro_1", "banheiro_1")}
+          {renderRoom("quarto_3", "quarto_3")}
+          {renderRoom("sala", "sala")}
+          {renderRoom("lavanderia", "lavanderia")}
+          {renderRoom("escritorio", "escritorio")}
+          {renderRoom("garagem", "garagem")}
         </div>
       </Card>
 

@@ -24,6 +24,7 @@ interface EnergyContextType {
   totalMonthlyCost: number;
   totalDailyCost: number;
   getApplianceConsumption: (appliance: Appliance) => { monthlyKwh: number };
+  isClient: boolean;
 }
 
 export const EnergyContext = createContext<EnergyContextType | null>(null);
@@ -172,6 +173,7 @@ export const EnergyProvider = ({ children }: { children: React.ReactNode }) => {
     totalMonthlyCost,
     totalDailyCost,
     getApplianceConsumption,
+    isClient
   };
 
   return (
