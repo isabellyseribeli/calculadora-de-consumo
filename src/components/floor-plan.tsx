@@ -4,7 +4,7 @@ import { useEnergy } from "@/hooks/use-energy";
 import { useState } from "react";
 import RoomModal from "./room-modal";
 import { Card } from "./ui/card";
-import { Lamp, Utensils, Bed, ShowerHead, Tv, WashingMachine, Laptop, Wind, Printer, Car, Refrigerator, Microwaves, Stove } from 'lucide-react';
+import { Lamp, Utensils, Bed, ShowerHead, Tv, WashingMachine, Laptop, Wind, Printer, Car, Refrigerator, Microwave, CookingPot } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 const roomIcons: { [key: string]: React.ReactNode } = {
@@ -28,8 +28,8 @@ const applianceIcons: { [key: string]: React.ReactNode } = {
     'Televisão': <Tv className="w-4 h-4" />,
     'Ar Condicionado': <Wind className="w-4 h-4" />,
     'Geladeira': <Refrigerator className="w-4 h-4" />,
-    'Fogão': <Stove className="w-4 h-4" />,
-    'Micro-ondas': <Microwaves className="w-4 h-4" />,
+    'Fogão': <CookingPot className="w-4 h-4" />,
+    'Micro-ondas': <Microwave className="w-4 h-4" />,
     'Ventilador': <Wind className="w-4 h-4" />,
     'Impressora': <Printer className="w-4 h-4" />,
     'Máquina de Lavar': <WashingMachine className="w-4 h-4" />,
@@ -94,7 +94,7 @@ export default function FloorPlan() {
 
   return (
     <>
-      <Card className="p-4 md:p-6 shadow-lg bg-black/80">
+      <Card className="p-4 md:p-6 shadow-lg bg-card/50">
         <div className="grid grid-cols-[1fr_2fr_2fr] grid-rows-[auto] gap-2 max-w-4xl mx-auto">
             {renderRoom("corredor", "row-span-4")}
             {renderRoom("suite", "col-span-1")}
