@@ -7,7 +7,7 @@ import { EnergyProvider } from "@/contexts/energy-provider";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "EnergyWise Home",
+  title: "EcoWatt",
   description: "Calcule e gerencie o consumo de energia da sua casa.",
 };
 

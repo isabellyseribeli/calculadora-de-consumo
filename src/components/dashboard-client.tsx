@@ -106,7 +106,7 @@ export default function DashboardClient() {
             </CardHeader>
             <CardContent>
               <p className="text-foreground/80">
-                Bem-vindo ao EnergyWise Home! Para ver seus dados de consumo, vá para a página <a href="/planta-da-casa" className="font-bold underline hover:text-primary">Planta da Casa</a> e comece a adicionar seus eletrodomésticos em cada cômodo.
+                Bem-vindo ao EcoWatt! Para ver seus dados de consumo, vá para a página <a href="/planta-da-casa" className="font-bold underline hover:text-primary">Planta da Casa</a> e comece a adicionar seus eletrodomésticos em cada cômodo.
               </p>
             </CardContent>
           </Card>
