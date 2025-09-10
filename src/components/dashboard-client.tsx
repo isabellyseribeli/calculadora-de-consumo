@@ -22,6 +22,7 @@ export default function DashboardClient() {
     totalDailyCost,
     tariffFlag,
     setTariffFlag,
+    isClient,
   } = useEnergy();
 
   const formatCurrency = (value: number) => {
@@ -87,7 +88,9 @@ export default function DashboardClient() {
               onValueChange={(value) => setTariffFlag(value as TariffFlag)}
             >
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Selecione a bandeira" />
+                <SelectValue placeholder="Selecione a bandeira">
+                  {isClient ? TARIFF_RATES[tariffFlag].label : ''}
+                </SelectValue>
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(TARIFF_RATES).map(([key, { label }]) => (
