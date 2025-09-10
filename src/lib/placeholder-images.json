@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "energy-matrix-infographic",
+      "description": "An infographic explaining energy and electrical matrices.",
+      "imageUrl": "https://picsum.photos/seed/ematrix/1200/600",
+      "imageHint": "infographic electricity"
+    }
+  ]
 }
