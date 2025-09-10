@@ -36,15 +36,24 @@ export const EnergyProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     setIsClient(true);
-    const savedRooms = localStorage.getItem("energywise-rooms");
-    if (savedRooms) {
-      setRooms(JSON.parse(savedRooms));
-    }
-    const savedTariff = localStorage.getItem("energywise-tariff");
-    if (savedTariff) {
-      setTariffFlag(savedTariff as TariffFlag);
-    }
   }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      const savedRooms = localStorage.getItem("energywise-rooms");
+      if (savedRooms) {
+        try {
+          setRooms(JSON.parse(savedRooms));
+        } catch (e) {
+          console.error("Failed to parse rooms from localStorage", e);
+        }
+      }
+      const savedTariff = localStorage.getItem("energywise-tariff");
+      if (savedTariff) {
+        setTariffFlag(savedTariff as TariffFlag);
+      }
+    }
+  }, [isClient]);
 
   useEffect(() => {
     if(isClient) {
