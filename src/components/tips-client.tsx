@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Lightbulb, Notebook } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Textarea } from "./ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 const energySavingTips = [
     "Aproveite a luz natural: Abra cortinas e persianas durante o dia para iluminar os ambientes sem usar lâmpadas.",
@@ -18,6 +19,7 @@ const energySavingTips = [
 
 export default function TipsClient() {
   const [notes, setNotes] = useState("");
+  const { toast } = useToast();
 
   useEffect(() => {
     const savedNotes = localStorage.getItem("energywise-notes");
@@ -30,6 +32,10 @@ export default function TipsClient() {
     const newNotes = event.target.value;
     setNotes(newNotes);
     localStorage.setItem("energywise-notes", newNotes);
+    toast({
+        title: "Nota salva!",
+        description: "Sua anotação foi salva no bloco de notas.",
+    })
   };
 
   return (
