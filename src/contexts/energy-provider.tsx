@@ -27,6 +27,9 @@ interface EnergyContextType {
 
 export const EnergyContext = createContext<EnergyContextType | null>(null);
 
+// Simple ID generator
+const generateId = () => Math.random().toString(36).substr(2, 9);
+
 export const EnergyProvider = ({ children }: { children: React.ReactNode }) => {
   const [isClient, setIsClient] = useState(false);
   const [rooms, setRooms] = useState<Room[]>(() => {
@@ -71,7 +74,7 @@ export const EnergyProvider = ({ children }: { children: React.ReactNode }) => {
                 ...room,
                 appliances: [
                   ...room.appliances,
-                  { ...applianceData, id: crypto.randomUUID() },
+                  { ...applianceData, id: generateId() },
                 ],
               }
             : room

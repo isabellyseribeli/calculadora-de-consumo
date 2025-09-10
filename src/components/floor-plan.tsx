@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import RoomModal from "./room-modal";
 import { Card } from "./ui/card";
-import { Lamp, Utensils, Bed, Shower, Tv, WashingMachine, Laptop } from 'lucide-react';
+import { Lamp, Utensils, Bed, ShowerHead, Tv, WashingMachine, Laptop } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 const roomIcons: { [key: string]: React.ReactNode } = {
@@ -13,11 +13,11 @@ const roomIcons: { [key: string]: React.ReactNode } = {
   sala: <Tv />,
   lavanderia: <WashingMachine />,
   quarto_1: <Bed />,
-  banheiro_social: <Shower />,
+  banheiro_social: <ShowerHead />,
   escritorio: <Laptop />,
   quarto_2: <Bed />,
   suite: <Bed />,
-  banheiro_suite: <Shower />,
+  banheiro_suite: <ShowerHead />,
 };
 
 export default function FloorPlan() {
