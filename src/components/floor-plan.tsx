@@ -54,23 +54,23 @@ export default function FloorPlan() {
 
     const totalAppliances = room.appliances.length;
     const roomBgColors: { [key: string]: string } = {
-        suite: 'bg-pink-300',
-        banheiro_suite: 'bg-purple-300',
-        quarto_2: 'bg-indigo-300',
-        cozinha: 'bg-gray-300',
-        banheiro_1: 'bg-orange-300',
-        quarto_3: 'bg-amber-700/50',
-        sala: 'bg-green-500',
-        lavanderia: 'bg-red-500',
-        escritorio: 'bg-cyan-300',
-        garagem: 'bg-yellow-400',
-        corredor: 'bg-yellow-300',
+        suite: 'bg-blue-200',
+        banheiro_suite: 'bg-blue-300',
+        quarto_2: 'bg-purple-200',
+        cozinha: 'bg-orange-200',
+        banheiro_1: 'bg-gray-300',
+        quarto_3: 'bg-teal-200',
+        sala: 'bg-green-200',
+        lavanderia: 'bg-indigo-200',
+        escritorio: 'bg-pink-200',
+        garagem: 'bg-yellow-200',
+        corredor: 'bg-gray-200',
     };
 
     return (
       <div
         className={cn(
-          "flex flex-col items-center justify-center p-4 rounded-md text-gray-800 font-bold text-center cursor-pointer hover:ring-2 hover:ring-primary hover:ring-offset-2 transition-all duration-300 min-h-[100px]",
+          "flex flex-col items-center justify-center p-4 rounded-md text-gray-800 font-bold text-center cursor-pointer hover:ring-2 hover:ring-primary hover:ring-offset-2 transition-all duration-300 min-h-[100px] shadow-inner",
           roomBgColors[roomId],
           className
         )}
@@ -95,18 +95,18 @@ export default function FloorPlan() {
   return (
     <>
       <Card className="p-4 md:p-6 shadow-lg bg-card/50">
-        <div className="grid grid-cols-[1fr_2fr_2fr] grid-rows-[auto] gap-2 max-w-4xl mx-auto">
-            {renderRoom("corredor", "row-span-4")}
-            {renderRoom("suite", "col-span-1")}
-            {renderRoom("banheiro_suite", "col-span-1")}
-            {renderRoom("quarto_2", "col-span-1")}
-            {renderRoom("cozinha", "row-span-3")}
-            {renderRoom("banheiro_1", "col-span-1")}
-            {renderRoom("quarto_3", "col-span-1")}
-            {renderRoom("sala", "col-start-1 col-end-3")}
-            {renderRoom("lavanderia", "")}
-            {renderRoom("escritorio", "col-start-1 col-end-2")}
-            {renderRoom("garagem", "col-start-2 col-end-4")}
+        <div className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr] grid-rows-[auto] gap-2 max-w-5xl mx-auto">
+          {renderRoom("garagem", "col-start-1 col-end-3 row-start-1")}
+          {renderRoom("escritorio", "col-start-3 col-end-4 row-start-1")}
+          {renderRoom("lavanderia", "col-start-4 col-end-5 row-start-1")}
+          {renderRoom("sala", "col-start-1 col-end-3 row-start-2 row-span-2")}
+          {renderRoom("quarto_3", "col-start-3 col-end-4 row-start-2")}
+          {renderRoom("banheiro_1", "col-start-4 col-end-5 row-start-2")}
+          {renderRoom("corredor", "col-start-3 col-end-5 row-start-3")}
+          {renderRoom("cozinha", "col-start-1 col-end-3 row-start-4 row-span-2")}
+          {renderRoom("quarto_2", "col-start-3 col-end-4 row-start-4")}
+          {renderRoom("banheiro_suite", "col-start-4 col-end-5 row-start-4")}
+          {renderRoom("suite", "col-start-3 col-end-5 row-start-5")}
         </div>
       </Card>
 

@@ -11,7 +11,7 @@ export const TARIFF_RATES: Record<TariffFlag, { rate: number; label: string }> =
 export const INITIAL_ROOMS: Room[] = [
     {
         id: "suite",
-        name: "Quarto suíte",
+        name: "Suíte",
         appliances: [
           { id: generateId(), name: "Televisão", power: 120, usageHoursPerDay: 4 },
           { id: generateId(), name: "Ar Condicionado", power: 1000, usageHoursPerDay: 8 },
@@ -20,7 +20,7 @@ export const INITIAL_ROOMS: Room[] = [
       },
       {
         id: "banheiro_suite",
-        name: "Banheiro suíte",
+        name: "Banheiro Suíte",
         appliances: [
           { id: generateId(), name: "Chuveiro", power: 5500, usageHoursPerDay: 0.5 },
           { id: generateId(), name: "Lâmpada", power: 10, usageHoursPerDay: 1 },
@@ -48,7 +48,7 @@ export const INITIAL_ROOMS: Room[] = [
       },
       {
         id: "banheiro_1",
-        name: "Banheiro 1",
+        name: "Banheiro",
         appliances: [
           { id: generateId(), name: "Chuveiro", power: 5500, usageHoursPerDay: 0.5 },
           { id: generateId(), name: "Lâmpada", power: 10, usageHoursPerDay: 1 },
