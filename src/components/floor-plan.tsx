@@ -95,18 +95,22 @@ export default function FloorPlan() {
   return (
     <>
       <Card className="p-4 md:p-6 shadow-lg bg-card/50">
-        <div className="grid grid-cols-[1.5fr_1fr_1fr_1.5fr] grid-rows-[auto] gap-2 max-w-5xl mx-auto">
-          {renderRoom("garagem", "col-start-1 col-end-3 row-start-1")}
-          {renderRoom("escritorio", "col-start-3 col-end-4 row-start-1")}
-          {renderRoom("lavanderia", "col-start-4 col-end-5 row-start-1")}
-          {renderRoom("sala", "col-start-1 col-end-3 row-start-2 row-span-2")}
-          {renderRoom("quarto_3", "col-start-3 col-end-4 row-start-2")}
-          {renderRoom("banheiro_1", "col-start-4 col-end-5 row-start-2")}
-          {renderRoom("corredor", "col-start-3 col-end-5 row-start-3")}
-          {renderRoom("cozinha", "col-start-1 col-end-3 row-start-4 row-span-2")}
-          {renderRoom("quarto_2", "col-start-3 col-end-4 row-start-4")}
-          {renderRoom("banheiro_suite", "col-start-4 col-end-5 row-start-4")}
-          {renderRoom("suite", "col-start-3 col-end-5 row-start-5")}
+        <div className="grid grid-cols-4 grid-rows-5 gap-2 max-w-5xl mx-auto">
+          {renderRoom("garagem", "col-span-2")}
+          {renderRoom("escritorio", "col-span-1")}
+          {renderRoom("lavanderia", "col-span-1")}
+          
+          {renderRoom("sala", "col-span-2 row-span-2")}
+          {renderRoom("quarto_3", "col-span-1")}
+          {renderRoom("banheiro_1", "col-span-1")}
+          
+          {renderRoom("corredor", "col-span-2")}
+          
+          {renderRoom("cozinha", "col-span-2 row-span-2")}
+          {renderRoom("quarto_2", "col-span-1")}
+          {renderRoom("banheiro_suite", "col-span-1")}
+
+          {renderRoom("suite", "col-span-2")}
         </div>
       </Card>
 
