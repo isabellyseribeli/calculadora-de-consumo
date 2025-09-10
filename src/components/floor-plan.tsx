@@ -120,7 +120,7 @@ export default function FloorPlan() {
             gridTemplateAreas: `
               'suite banheiro_suite cozinha'
               'quarto_2 banheiro_social cozinha'
-              'quarto_3 sala lavanderia'
+              'quarto_3 sala cozinha'
               'escritorio sala lavanderia'
             `,
             gridTemplateRows: '1fr 1fr 1fr 1fr',
