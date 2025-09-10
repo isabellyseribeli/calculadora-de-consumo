@@ -10,50 +10,48 @@ export const TARIFF_RATES: Record<TariffFlag, { rate: number; label: string }> =
 
 export const INITIAL_ROOMS: Room[] = [
     {
-        id: "suite",
-        name: "Suíte",
-        appliances: [],
-      },
-      {
-        id: "banheiro_suite",
-        name: "Banheiro Suíte",
-        appliances: [],
-      },
-      {
-        id: "quarto_2",
-        name: "Quarto 2",
-        appliances: [],
-      },
-      {
-        id: "cozinha",
-        name: "Cozinha",
-        appliances: [],
-      },
-      {
-        id: "banheiro_1",
-        name: "Banheiro",
-        appliances: [],
-      },
-      {
-        id: "quarto_3",
-        name: "Quarto 3",
-        appliances: [],
-      },
-      {
-        id: "sala",
-        name: "Sala",
-        appliances: [],
-      },
-      {
-        id: "lavanderia",
-        name: "Lavanderia",
-        appliances: [],
-      },
-      {
-        id: "escritorio",
-        name: "Escritório",
-        appliances: [],
-      },
-      { id: "garagem", name: "Garagem", appliances: [] },
-      { id: "corredor", name: "Corredor", appliances: [] },
+      id: "sala",
+      name: "Sala",
+      appliances: [],
+    },
+    {
+      id: "cozinha",
+      name: "Cozinha",
+      appliances: [],
+    },
+    {
+      id: "suite",
+      name: "Suíte",
+      appliances: [],
+    },
+    {
+      id: "banheiro_suite",
+      name: "Banheiro Suíte",
+      appliances: [],
+    },
+    {
+      id: "quarto_2",
+      name: "Quarto 2",
+      appliances: [],
+    },
+    {
+      id: "banheiro_social",
+      name: "Banheiro Social",
+      appliances: [],
+    },
+    {
+      id: "lavanderia",
+      name: "Lavanderia",
+      appliances: [],
+    },
+    {
+      id: "quarto_3",
+      name: "Quarto 3",
+      appliances: [],
+    },
+    {
+      id: "escritorio",
+      name: "Escritório",
+      appliances: [],
+    },
 ];

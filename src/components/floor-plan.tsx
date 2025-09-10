@@ -19,6 +19,7 @@ const roomIcons: { [key: string]: React.ReactNode } = {
   quarto_3: <Bed />,
   suite: <Bed />,
   banheiro_suite: <ShowerHead />,
+  banheiro_social: <ShowerHead />,
   corredor: <Lamp />,
   garagem: <Car />,
 };
@@ -55,17 +56,15 @@ export default function FloorPlan() {
 
     const totalAppliances = room.appliances.length;
     const roomBgColors: { [key: string]: string } = {
-        suite: 'bg-pink-300',
-        banheiro_suite: 'bg-purple-300',
-        quarto_2: 'bg-blue-300',
-        cozinha: 'bg-gray-300',
-        banheiro_1: 'bg-orange-300',
-        quarto_3: 'bg-yellow-600/50',
-        sala: 'bg-green-400',
-        lavanderia: 'bg-red-400',
-        escritorio: 'bg-cyan-300',
-        garagem: 'bg-yellow-300',
-        corredor: 'bg-yellow-200',
+        suite: 'bg-blue-200',
+        banheiro_suite: 'bg-blue-100',
+        quarto_2: 'bg-green-200',
+        quarto_3: 'bg-yellow-200',
+        banheiro_social: 'bg-purple-200',
+        cozinha: 'bg-orange-200',
+        sala: 'bg-indigo-200',
+        lavanderia: 'bg-red-200',
+        escritorio: 'bg-cyan-200',
     };
 
     return (
@@ -95,18 +94,14 @@ export default function FloorPlan() {
   
   const renderSkeleton = () => (
     <Card className="p-4 md:p-6 shadow-lg bg-card/50">
-        <div className="grid grid-cols-3 grid-rows-6 gap-2 max-w-4xl mx-auto h-[70vh]">
-            <Skeleton className="col-start-1 row-start-1 row-span-4" />
-            <Skeleton className="col-start-2 row-start-1" />
-            <Skeleton className="col-start-3 row-start-1" />
-            <Skeleton className="col-start-2 row-start-2" />
-            <Skeleton className="col-start-3 row-start-2 row-span-3" />
-            <Skeleton className="col-start-2 row-start-3" />
-            <Skeleton className="col-start-2 row-start-4" />
-            <Skeleton className="col-start-1 col-span-2 row-start-5" />
-            <Skeleton className="col-start-3 row-start-5" />
-            <Skeleton className="col-start-1 row-start-6" />
-            <Skeleton className="col-start-2 col-span-2 row-start-6" />
+        <div className="grid grid-cols-3 grid-rows-3 gap-2 max-w-4xl mx-auto h-[70vh]">
+            <Skeleton className="col-span-2 row-span-1" />
+            <Skeleton className="col-span-1 row-span-1" />
+            <Skeleton className="col-span-1 row-span-1" />
+            <Skeleton className="col-span-1 row-span-1" />
+            <Skeleton className="col-span-1 row-span-1" />
+            <Skeleton className="col-span-1 row-span-1" />
+            <Skeleton className="col-span-2 row-span-1" />
         </div>
     </Card>
   );
@@ -123,28 +118,24 @@ export default function FloorPlan() {
           className="grid gap-2 max-w-4xl mx-auto h-[70vh]"
           style={{
             gridTemplateAreas: `
-              'corredor suite          banheiro_suite'
-              'corredor quarto_2       cozinha'
-              'corredor banheiro_1     cozinha'
-              'corredor quarto_3       cozinha'
-              'sala     sala           lavanderia'
-              'escritorio garagem      garagem'
+              'sala sala cozinha'
+              'suite banheiro_suite cozinha'
+              'quarto_2 banheiro_social lavanderia'
+              'quarto_3 escritorio escritorio'
             `,
-            gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr',
-            gridTemplateColumns: '0.5fr 1.5fr 1fr'
+            gridTemplateRows: '1.5fr 1fr 1fr 1fr',
+            gridTemplateColumns: '1fr 1fr 1fr'
           }}
         >
-          {renderRoom("corredor", "corredor")}
+          {renderRoom("sala", "sala")}
+          {renderRoom("cozinha", "cozinha")}
           {renderRoom("suite", "suite")}
           {renderRoom("banheiro_suite", "banheiro_suite")}
           {renderRoom("quarto_2", "quarto_2")}
-          {renderRoom("cozinha", "cozinha")}
-          {renderRoom("banheiro_1", "banheiro_1")}
-          {renderRoom("quarto_3", "quarto_3")}
-          {renderRoom("sala", "sala")}
+          {renderRoom("banheiro_social", "banheiro_social")}
           {renderRoom("lavanderia", "lavanderia")}
+          {renderRoom("quarto_3", "quarto_3")}
           {renderRoom("escritorio", "escritorio")}
-          {renderRoom("garagem", "garagem")}
         </div>
       </Card>
 
